@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -6,6 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 class TransactionForm extends StatelessWidget {
   final titlecontroller = TextEditingController();
   final valuecontroller = TextEditingController();
+
+  final void Function(String, double) onSubmit;
+
+  TransactionForm(this.onSubmit);
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +44,9 @@ class TransactionForm extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  print(titlecontroller.text);
-                  print(valuecontroller.text);
+                  final title = titlecontroller.text;
+                  final value = double.tryParse(valuecontroller.text) ?? 0.0;
+                  onSubmit(title, value);
                 },
               ),
             )
