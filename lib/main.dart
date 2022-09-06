@@ -13,6 +13,11 @@ class ExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        //substituir depreciado posteriormente
+      ),
     );
   }
 }
